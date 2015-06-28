@@ -23,7 +23,7 @@ public class AlarmService extends Service{
             }
         };
 
-        timer.schedule(timerTask, 1000, 3600000);
+        timer.schedule(timerTask, 1000, 18000000);
     }
 
     @Override
