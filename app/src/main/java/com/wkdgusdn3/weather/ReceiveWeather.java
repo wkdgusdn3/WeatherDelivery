@@ -6,7 +6,6 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -47,7 +46,6 @@ class ReceiveWeather extends AsyncTask<URL, Integer, Long> {
 
         try {
             response = client.newCall(request).execute();
-            Log.e("wkdgusdn3", "1");
             parseXML(response.body().string());
         } catch (Exception e) {
             e.printStackTrace();
@@ -57,7 +55,6 @@ class ReceiveWeather extends AsyncTask<URL, Integer, Long> {
     }
 
     protected void onPostExecute(Long result) {
-        Log.e("wkdgusdn3", weatherText);
 
         NotificationManager nm = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, new Intent(context, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
