@@ -27,7 +27,7 @@ public class AlarmService extends Service{
             }
         };
 
-        timer.schedule(timerTask, 1000, 10000);
+        timer.schedule(timerTask, 1000, 3600000);
 
         NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, new Intent(getApplicationContext(), MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
