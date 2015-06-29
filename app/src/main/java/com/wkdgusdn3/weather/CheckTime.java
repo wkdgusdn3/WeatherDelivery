@@ -20,8 +20,8 @@ public class CheckTime {
         String minute = Calendar.MINUTE + "";
         String second = Calendar.SECOND + "";
 
-        if(hour.equals("7") && minute.equals("0") && second.equals("0")) {
-//        if(true) {
+//        if(hour.equals("7")) {
+        if(true) {
             new ReceiveWeather(context).execute();
         }
     }
