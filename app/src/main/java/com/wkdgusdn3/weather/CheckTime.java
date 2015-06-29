@@ -1,6 +1,8 @@
 package com.wkdgusdn3.weather;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 import java.util.Calendar;
 
@@ -16,12 +18,14 @@ public class CheckTime {
     void compareTime() {
         Calendar curTime = Calendar.getInstance();
 
-        String hour = Calendar.HOUR_OF_DAY + "";
-        String minute = Calendar.MINUTE + "";
-        String second = Calendar.SECOND + "";
+        String curHour = curTime.get(Calendar.HOUR_OF_DAY) + "";
+        String curMinute = curTime.get(Calendar.MINUTE) + "";
 
-//        if(hour.equals("7")) {
-        if(true) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        String setHour = sharedPreferences.getString("HOUR", "7");
+        String setMinute = sharedPreferences.getString("MINUTE", "0");
+
+        if(curHour.equals(setHour) && curMinute.equals(setMinute)) {
             new ReceiveWeather(context).execute();
         }
     }

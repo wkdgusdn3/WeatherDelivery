@@ -60,11 +60,11 @@ class ReceiveWeather extends AsyncTask<URL, Integer, Long> {
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, new Intent(context, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
 
         Notification.Builder mBuilder = new Notification.Builder(context);
-        mBuilder.setTicker("Notification.Builder");
+        mBuilder.setTicker("날씨배달!!");
         mBuilder.setSmallIcon(R.mipmap.ic_launcher);
         mBuilder.setWhen(System.currentTimeMillis());
         mBuilder.setNumber(10);
-        mBuilder.setContentTitle("날씨배달!!");
+        mBuilder.setContentTitle("오늘의 날씨!");
         mBuilder.setContentText(weatherText);
         mBuilder.setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_VIBRATE);
         mBuilder.setContentIntent(pendingIntent);
@@ -73,7 +73,7 @@ class ReceiveWeather extends AsyncTask<URL, Integer, Long> {
         Notification.BigTextStyle style = new Notification.BigTextStyle(mBuilder);
 
         style.setSummaryText("날씨배달!!");
-        style.setBigContentTitle("오늘의 날씨!!");
+        style.setBigContentTitle("오늘의 날씨!!!");
         style.bigText(weatherText);
 
         nm.notify(111, mBuilder.build());
