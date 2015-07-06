@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">WeatherDelivery</string>
-
+    <string name="app_name">날씨배달</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 </resources>

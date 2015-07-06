@@ -18,6 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.wkdgusdn3.location.LocationSettingActivity"/>
+        <activity android:name="com.wkdgusdn3.time.TimeSettingActivity"/>
 
         <service
             android:name="com.wkdgusdn3.alarm.AlarmService"

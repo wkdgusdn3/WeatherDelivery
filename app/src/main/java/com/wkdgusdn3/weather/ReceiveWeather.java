@@ -11,6 +11,7 @@ import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 import com.wkdgusdn3.item.WeatherInfo;
+import com.wkdgusdn3.manager.InfoManager;
 import com.wkdgusdn3.weatherdelivery.MainActivity;
 import com.wkdgusdn3.weatherdelivery.R;
 
@@ -34,7 +35,8 @@ class ReceiveWeather extends AsyncTask<URL, Integer, Long> {
 
     protected Long doInBackground(URL... urls) {
 
-        String url = "http://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=1100000000";
+        InfoManager.setData(context);
+        String url = "http://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=" + InfoManager.cityCode;
 
         OkHttpClient client = new OkHttpClient();
 
