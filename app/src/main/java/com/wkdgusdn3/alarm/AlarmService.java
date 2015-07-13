@@ -31,4 +31,11 @@ public class AlarmService extends Service{
         return null;
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        startService(new Intent(getApplicationContext(), AlarmService.class));
+    }
+
 }
