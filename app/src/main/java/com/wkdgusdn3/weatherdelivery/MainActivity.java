@@ -31,6 +31,7 @@ public class MainActivity extends ActionBarActivity {
     TextView textView_temperature;
     TextView textView_humidity;
     TextView textView_rainfallProbability;
+    TextView textView_weatherText;
     ImageView imageView_weatherIcon;
 
     @Override
@@ -51,7 +52,7 @@ public class MainActivity extends ActionBarActivity {
 
         new ReceiveWeather(getApplicationContext(), textView_temperature,
                 textView_humidity, textView_rainfallProbability,
-                imageView_weatherIcon).execute();
+                textView_weatherText, imageView_weatherIcon).execute();
         startService(new Intent(getApplicationContext(), AlarmService.class));
 
     }
@@ -72,6 +73,7 @@ public class MainActivity extends ActionBarActivity {
         textView_temperature = (TextView)findViewById(R.id.main_temperature);
         textView_humidity = (TextView)findViewById(R.id.main_humidity);
         textView_rainfallProbability = (TextView)findViewById(R.id.main_rainfallProbability);
+        textView_weatherText = (TextView)findViewById(R.id.main_weatherText);
         imageView_weatherIcon = (ImageView)findViewById(R.id.main_weatherIcon);
     }
 

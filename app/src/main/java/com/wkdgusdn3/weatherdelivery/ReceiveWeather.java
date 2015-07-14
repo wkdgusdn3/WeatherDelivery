@@ -23,16 +23,18 @@ class ReceiveWeather extends AsyncTask<URL, Integer, Long> {
     TextView textView_temperature;
     TextView textView_humidity;
     TextView textView_rainfallProbability;
+    TextView textView_weatherText;
     ImageView imageView_weatherIcon;
 
     public ReceiveWeather(Context context, TextView textView_temperature,
                           TextView textView_humidity, TextView textView_rainfallProbability,
-                          ImageView imageView_weatherIcon) {
+                          TextView textView_weatherText, ImageView imageView_weatherIcon) {
 
         this.context = context;
         this.textView_temperature = textView_temperature;
         this.textView_humidity = textView_humidity;
         this.textView_rainfallProbability = textView_rainfallProbability;
+        this.textView_weatherText = textView_weatherText;
         this.imageView_weatherIcon = imageView_weatherIcon;
     }
 
@@ -64,6 +66,7 @@ class ReceiveWeather extends AsyncTask<URL, Integer, Long> {
         textView_temperature.setText(weatherInfo.getTemp() + "º");
         textView_humidity.setText(weatherInfo.getReh() + "%");
         textView_rainfallProbability.setText(weatherInfo.getPop() + "%");
+        textView_weatherText.setText(weatherInfo.getWfKor());
         imageView_weatherIcon.setBackgroundResource(setWeatherIcon(weatherInfo.getWfKor()));
 
     }
