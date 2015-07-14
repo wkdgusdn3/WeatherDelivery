@@ -4,8 +4,6 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 
-import com.wkdgusdn3.weather.CheckTime;
-
 import java.util.Timer;
 import java.util.TimerTask;
 

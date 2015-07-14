@@ -1,4 +1,4 @@
-package com.wkdgusdn3.weather;
+package com.wkdgusdn3.alarm;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -15,7 +15,6 @@ import com.wkdgusdn3.manager.InfoManager;
 import com.wkdgusdn3.weatherdelivery.MainActivity;
 import com.wkdgusdn3.weatherdelivery.R;
 
-import org.json.JSONObject;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
@@ -23,13 +22,12 @@ import java.io.StringReader;
 import java.net.URL;
 import java.util.ArrayList;
 
-class ReceiveWeather extends AsyncTask<URL, Integer, Long> {
+class AlarmReceiveWeather extends AsyncTask<URL, Integer, Long> {
     Context context;
-    JSONObject jsonObject;
     ArrayList<WeatherInfo> weatherInfo = new ArrayList<WeatherInfo>();
     String weatherText = "";
 
-    public ReceiveWeather(Context context) {
+    public AlarmReceiveWeather(Context context) {
         this.context = context;
     }
 

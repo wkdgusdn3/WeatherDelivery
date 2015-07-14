@@ -1,4 +1,4 @@
-package com.wkdgusdn3.weather;
+package com.wkdgusdn3.alarm;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -26,7 +26,7 @@ public class CheckTime {
         String setMinute = sharedPreferences.getString("MINUTE", "0");
 
         if(curHour.equals(setHour) && curMinute.equals(setMinute)) {
-            new ReceiveWeather(context).execute();
+            new AlarmReceiveWeather(context).execute();
         }
     }
 }
