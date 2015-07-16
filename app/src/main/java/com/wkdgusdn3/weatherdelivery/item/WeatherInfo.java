@@ -1,4 +1,4 @@
-package com.wkdgusdn3.item;
+package com.wkdgusdn3.weatherdelivery.item;
 
 public class WeatherInfo {
     protected String hour;  // 시간

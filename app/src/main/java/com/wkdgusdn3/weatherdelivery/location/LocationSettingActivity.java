@@ -1,4 +1,4 @@
-package com.wkdgusdn3.location;
+package com.wkdgusdn3.weatherdelivery.location;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.wkdgusdn3.manager.InfoManager;
+import com.wkdgusdn3.weatherdelivery.manager.InfoManager;
 import com.wkdgusdn3.weatherdelivery.R;
 
 public class LocationSettingActivity extends ActionBarActivity {

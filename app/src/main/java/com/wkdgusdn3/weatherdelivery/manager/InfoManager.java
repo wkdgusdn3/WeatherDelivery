@@ -1,4 +1,4 @@
-package com.wkdgusdn3.manager;
+package com.wkdgusdn3.weatherdelivery.manager;
 
 import android.content.Context;
 import android.content.SharedPreferences;

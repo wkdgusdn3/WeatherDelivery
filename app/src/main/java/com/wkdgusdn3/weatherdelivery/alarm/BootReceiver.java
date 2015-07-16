@@ -1,4 +1,4 @@
-package com.wkdgusdn3.alarm;
+package com.wkdgusdn3.weatherdelivery.alarm;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

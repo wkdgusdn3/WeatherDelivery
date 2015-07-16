@@ -1,4 +1,4 @@
-package com.wkdgusdn3.time;
+package com.wkdgusdn3.weatherdelivery.time;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.wkdgusdn3.manager.InfoManager;
+import com.wkdgusdn3.weatherdelivery.manager.InfoManager;
 import com.wkdgusdn3.weatherdelivery.R;
 
 import java.util.ArrayList;
@@ -70,6 +70,8 @@ public class TimeSettingActivity extends ActionBarActivity {
                         spinner_hour.getSelectedItem() + "시 " +
                                 spinner_minute.getSelectedItem() + "분에 날씨 배달이 예약되었습니다",
                         Toast.LENGTH_LONG).show();
+
+                finish();
             }
         });
     }

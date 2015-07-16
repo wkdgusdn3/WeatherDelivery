@@ -1,41 +1,34 @@
-package com.wkdgusdn3.weatherdelivery;
+package com.wkdgusdn3.weatherdelivery.alarm;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
-import com.wkdgusdn3.item.WeatherInfo;
-import com.wkdgusdn3.manager.InfoManager;
+import com.wkdgusdn3.weatherdelivery.item.WeatherInfo;
+import com.wkdgusdn3.weatherdelivery.manager.InfoManager;
+import com.wkdgusdn3.weatherdelivery.main.MainActivity;
+import com.wkdgusdn3.weatherdelivery.R;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.StringReader;
 import java.net.URL;
+import java.util.ArrayList;
 
-class ReceiveWeather extends AsyncTask<URL, Integer, Long> {
+class AlarmReceiveWeather extends AsyncTask<URL, Integer, Long> {
     Context context;
-    WeatherInfo weatherInfo = new WeatherInfo();
-    TextView textView_temperature;
-    TextView textView_humidity;
-    TextView textView_rainfallProbability;
-    TextView textView_weatherText;
-    ImageView imageView_weatherIcon;
+    ArrayList<WeatherInfo> weatherInfo = new ArrayList<WeatherInfo>();
+    String weatherText = "";
 
-    public ReceiveWeather(Context context, TextView textView_temperature,
-                          TextView textView_humidity, TextView textView_rainfallProbability,
-                          TextView textView_weatherText, ImageView imageView_weatherIcon) {
-
+    public AlarmReceiveWeather(Context context) {
         this.context = context;
-        this.textView_temperature = textView_temperature;
-        this.textView_humidity = textView_humidity;
-        this.textView_rainfallProbability = textView_rainfallProbability;
-        this.textView_weatherText = textView_weatherText;
-        this.imageView_weatherIcon = imageView_weatherIcon;
     }
 
     protected Long doInBackground(URL... urls) {
@@ -63,12 +56,27 @@ class ReceiveWeather extends AsyncTask<URL, Integer, Long> {
 
     protected void onPostExecute(Long result) {
 
-        textView_temperature.setText(weatherInfo.getTemp() + "º");
-        textView_humidity.setText(weatherInfo.getReh() + "%");
-        textView_rainfallProbability.setText(weatherInfo.getPop() + "%");
-        textView_weatherText.setText(weatherInfo.getWfKor());
-        imageView_weatherIcon.setBackgroundResource(setWeatherIcon(weatherInfo.getWfKor()));
+        NotificationManager nm = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, new Intent(context, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
 
+        Notification.Builder mBuilder = new Notification.Builder(context);
+        mBuilder.setTicker("날씨배달!!");
+        mBuilder.setSmallIcon(R.mipmap.ic_launcher);
+        mBuilder.setWhen(System.currentTimeMillis());
+        mBuilder.setNumber(10);
+        mBuilder.setContentTitle("오늘의 날씨!");
+        mBuilder.setContentText(weatherText);
+        mBuilder.setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_VIBRATE);
+        mBuilder.setContentIntent(pendingIntent);
+        mBuilder.setAutoCancel(true);
+
+        Notification.BigTextStyle style = new Notification.BigTextStyle(mBuilder);
+
+        style.setSummaryText("날씨배달!!");
+        style.setBigContentTitle("오늘의 날씨!!!");
+        style.bigText(weatherText);
+
+        nm.notify(111, mBuilder.build());
     }
 
     void parseXML(String xml) {
@@ -77,8 +85,6 @@ class ReceiveWeather extends AsyncTask<URL, Integer, Long> {
             boolean onHour = false;
             boolean onTem = false;
             boolean onWfKor = false;
-            boolean onReh = false;
-            boolean onPop = false;
             boolean onEnd = false;
             boolean isItemTag1 = false;
             int i = 0;
@@ -94,30 +100,22 @@ class ReceiveWeather extends AsyncTask<URL, Integer, Long> {
                 if (eventType == XmlPullParser.START_TAG) {
                     tagName = parser.getName();
                     if (tagName.equals("data")) {
+                        weatherInfo.add(new WeatherInfo());
                         onEnd = false;
                         isItemTag1 = true;
                     }
                 } else if (eventType == XmlPullParser.TEXT && isItemTag1) {
                     if (tagName.equals("hour") && !onHour) {
-                        weatherInfo.setHour(parser.getText());
+                        weatherInfo.get(i).setHour(parser.getText());
                         onHour = true;
                     }
                     if (tagName.equals("temp") && !onTem) {
-                        weatherInfo.setTemp(parser.getText());
+                        weatherInfo.get(i).setTemp(parser.getText());
                         onTem = true;
                     }
                     if (tagName.equals("wfKor") && !onWfKor) {
-                        weatherInfo.setWfKor(parser.getText());
+                        weatherInfo.get(i).setWfKor(parser.getText());
                         onWfKor = true;
-                    }
-                    if(tagName.equals("pop") && !onPop) {
-                        weatherInfo.setPop(parser.getText());
-                        onPop = true;
-                    }
-                    if (tagName.equals("reh") && !onReh) {
-                        weatherInfo.setReh(parser.getText());
-                        onReh = true;
-                        break;
                     }
                 } else if (eventType == XmlPullParser.END_TAG) {
                     if (tagName.equals("s06") && onEnd == false) {
@@ -125,8 +123,6 @@ class ReceiveWeather extends AsyncTask<URL, Integer, Long> {
                         onHour = false;
                         onTem = false;
                         onWfKor = false;
-                        onReh = false;
-                        onPop = false;
                         isItemTag1 = false;
                         onEnd = true;
                     }
@@ -137,26 +133,9 @@ class ReceiveWeather extends AsyncTask<URL, Integer, Long> {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
 
-    private int setWeatherIcon(String weather) {
-
-        if(weather.equals("맑음")) {
-            return R.drawable.sun;
-        } else if(weather.equals("구름 조금")) {
-            return R.drawable.cloud;
-        } else if(weather.equals("구름 많음")) {
-            return R.drawable.clouds;
-        } else if(weather.equals("흐림")) {
-            return R.drawable.partly_cloudy;
-        } else if(weather.equals("비")) {
-            return R.drawable.rain;
-        } else if(weather.equals("눈/비")) {
-            return R.drawable.rain_and_snow;
-        } else if(weather.equals("눈")) {
-            return R.drawable.snow;
-        } else {
-            return R.drawable.sun;
+        for (int i = 0; i < 5; i++) {
+            weatherText = weatherText + weatherInfo.get(i).getHour() + "시 " + weatherInfo.get(i).getTemp() + "º " + weatherInfo.get(i).getWfKor() + "\n";
         }
     }
 }
