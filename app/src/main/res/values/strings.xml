@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">날씨배달</string>
+
+    <string name="title_section1">현재날씨</string>
+    <string name="title_section2">오늘날씨</string>
+    <string name="title_section3">주간날씨</string>
+    <string name="title_section4">날씨알림</string>
+
+    <string name="hello_world">Hello world!</string>
+
+    <string name="action_settings">Settings</string>
+</resources>
