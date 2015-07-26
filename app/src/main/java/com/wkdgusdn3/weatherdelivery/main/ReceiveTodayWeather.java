@@ -105,13 +105,7 @@ class ReceiveTodayWeather extends AsyncTask<URL, Integer, Long> {
                         onEnd = false;
                         isItemTag1 = true;
                     }
-                } else if(eventType == XmlPullParser.TEXT ) {
-                    if(tagName.equals("city")) {
-
-                    }
-                }
-
-                else if (eventType == XmlPullParser.TEXT && isItemTag1) {
+                } else if (eventType == XmlPullParser.TEXT && isItemTag1) {
                     if (tagName.equals("hour") && !onHour) {
                         weatherInfoList.get(i).setHour(parser.getText());
                         onHour = true;
