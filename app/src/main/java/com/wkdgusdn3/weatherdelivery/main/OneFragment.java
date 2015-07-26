@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.wkdgusdn3.weatherdelivery.R;
+import com.wkdgusdn3.weatherdelivery.manager.InfoManager;
 
 import java.util.Calendar;
 import java.util.Timer;
@@ -18,11 +19,9 @@ import java.util.TimerTask;
 
 public class OneFragment extends Fragment {
 
-
-    //    ListView listView;
-//    String[] item = {"시간설정", "지역설정"};
     View view;
     Activity activity;
+    TextView textView_location;
     TextView textView_time;
     TextView textView_ampm;
     TextView textView_temperature;
@@ -38,9 +37,10 @@ public class OneFragment extends Fragment {
 
 
         setVariable();
+        textView_location.setText(InfoManager.city);
         setTime();
 
-        new ReceiveWeather(view.getContext(), textView_temperature,
+        new ReceiveCurrentWeather(view.getContext(), textView_temperature,
                 textView_humidity, textView_rainfallProbability,
                 textView_weatherText, imageView_weatherIcon).execute();
 
@@ -49,13 +49,14 @@ public class OneFragment extends Fragment {
 
     private void setVariable() {
         activity = getActivity();
-        textView_time = (TextView) view.findViewById(R.id.main_time);
-        textView_ampm = (TextView) view.findViewById(R.id.main_ampm);
-        textView_temperature = (TextView) view.findViewById(R.id.main_temperature);
-        textView_humidity = (TextView) view.findViewById(R.id.main_humidity);
-        textView_rainfallProbability = (TextView) view.findViewById(R.id.main_rainfallProbability);
-        textView_weatherText = (TextView) view.findViewById(R.id.main_weatherText);
-        imageView_weatherIcon = (ImageView) view.findViewById(R.id.main_weatherIcon);
+        textView_location = (TextView) view.findViewById(R.id.mainFragmentOne_location);
+        textView_time = (TextView) view.findViewById(R.id.mainFragmentOne_time);
+        textView_ampm = (TextView) view.findViewById(R.id.mainFragmentOne_ampm);
+        textView_temperature = (TextView) view.findViewById(R.id.mainFragmentOne_temperature);
+        textView_humidity = (TextView) view.findViewById(R.id.mainFragmentOne_humidity);
+        textView_rainfallProbability = (TextView) view.findViewById(R.id.mainFragmentOne_rainfallProbability);
+        textView_weatherText = (TextView) view.findViewById(R.id.mainFragmentOne_weatherText);
+        imageView_weatherIcon = (ImageView) view.findViewById(R.id.mainFragmentOne_weatherIcon);
     }
 
     private void setTime() {

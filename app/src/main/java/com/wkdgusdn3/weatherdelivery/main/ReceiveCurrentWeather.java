@@ -18,7 +18,7 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import java.io.StringReader;
 import java.net.URL;
 
-class ReceiveWeather extends AsyncTask<URL, Integer, Long> {
+class ReceiveCurrentWeather extends AsyncTask<URL, Integer, Long> {
     Context context;
     WeatherInfo weatherInfo = new WeatherInfo();
     TextView textView_temperature;
@@ -27,9 +27,9 @@ class ReceiveWeather extends AsyncTask<URL, Integer, Long> {
     TextView textView_weatherText;
     ImageView imageView_weatherIcon;
 
-    public ReceiveWeather(Context context, TextView textView_temperature,
-                          TextView textView_humidity, TextView textView_rainfallProbability,
-                          TextView textView_weatherText, ImageView imageView_weatherIcon) {
+    public ReceiveCurrentWeather(Context context, TextView textView_temperature,
+                                 TextView textView_humidity, TextView textView_rainfallProbability,
+                                 TextView textView_weatherText, ImageView imageView_weatherIcon) {
 
         this.context = context;
         this.textView_temperature = textView_temperature;
