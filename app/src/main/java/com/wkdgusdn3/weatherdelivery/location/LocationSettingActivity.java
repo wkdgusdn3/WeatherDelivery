@@ -50,6 +50,7 @@ public class LocationSettingActivity extends ActionBarActivity {
             SharedPreferences.Editor editor =sharedPreferences.edit();
             editor.putString("CITY", adapter.getItem(arg2));
             editor.putString("CITYCODE", getCityCode(adapter.getItem(arg2)));
+            editor.putString("CITYCODE2", getCityCode2(adapter.getItem(arg2)));
             editor.commit();
 
             InfoManager.setData(getApplicationContext());
@@ -78,6 +79,28 @@ public class LocationSettingActivity extends ActionBarActivity {
             return "5000000000";
         } else {
             return "1100000000";
+        }
+    }
+
+    String getCityCode2(String city) {
+        if(city.equals("서울")) {
+            return "109";
+        } else if(city.equals("인천")) {
+            return "109";
+        } else if(city.equals("대전")) {
+            return "133";
+        } else if(city.equals("대구")) {
+            return "143";
+        } else if(city.equals("울산")) {
+            return "159";
+        } else if(city.equals("광주")) {
+            return "156";
+        } else if(city.equals("부산")) {
+            return "159";
+        } else if(city.equals("제주")) {
+            return "184";
+        } else {
+            return "109";
         }
     }
 }

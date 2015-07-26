@@ -20,35 +20,32 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-class ReceiveTodayWeather extends AsyncTask<URL, Integer, Long> {
+class ReceiveWeekWeather extends AsyncTask<URL, Integer, Long> {
     Context context;
 
     ArrayList<WeatherInfo> weatherInfoList = new ArrayList<WeatherInfo>();
     ArrayList<TextView> textViewList_date;
-    ArrayList<TextView> textViewList_time;
     ArrayList<ImageView> imageViewList_weatherIcon;
-    ArrayList<TextView> textViewList_temperature;
-    ArrayList<TextView> textViewList_rainFallProbability;
+    ArrayList<TextView> textViewList_temperatureMin;
+    ArrayList<TextView> textViewList_temperatureMax;
 
-    public ReceiveTodayWeather(Context context,
-                               ArrayList<TextView> textViewList_date,
-                               ArrayList<TextView> textViewList_time,
-                               ArrayList<ImageView> imageViewList_weatherIcon,
-                               ArrayList<TextView> textViewList_temperature,
-                               ArrayList<TextView> textViewList_rainFallProbability) {
+    public ReceiveWeekWeather(Context context,
+                              ArrayList<TextView> textViewList_date,
+                              ArrayList<ImageView> imageViewList_weatherIcon,
+                              ArrayList<TextView> textViewList_temperatureMin,
+                              ArrayList<TextView> textViewList_temperatureMax) {
 
         this.context = context;
         this.textViewList_date = textViewList_date;
-        this.textViewList_time = textViewList_time;
         this.imageViewList_weatherIcon = imageViewList_weatherIcon;
-        this.textViewList_temperature = textViewList_temperature;
-        this.textViewList_rainFallProbability = textViewList_rainFallProbability;
+        this.textViewList_temperatureMin = textViewList_temperatureMin;
+        this.textViewList_temperatureMax = textViewList_temperatureMax;
     }
 
     protected Long doInBackground(URL... urls) {
 
         InfoManager.setData(context);
-        String url = "http://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=" + InfoManager.cityCode;
+        String url = "http://www.kma.go.kr/weather/forecast/mid-term-rss3.jsp?stnId=" + InfoManager.cityCode2;
 
         OkHttpClient client = new OkHttpClient();
 
@@ -69,14 +66,6 @@ class ReceiveTodayWeather extends AsyncTask<URL, Integer, Long> {
     }
 
     protected void onPostExecute(Long result) {
-        for(int i=0; i<textViewList_date.size(); i++) {
-            textViewList_date.get(i).setText(setDate(weatherInfoList.get(i).getHour()));
-            textViewList_time.get(i).setText(setTime(weatherInfoList.get(i).getHour()));
-            imageViewList_weatherIcon.get(i).setBackgroundResource(
-                    setWeatherIcon(weatherInfoList.get(i).getWfKor()));
-            textViewList_temperature.get(i).setText(weatherInfoList.get(i).getTemp() + "º");
-            textViewList_rainFallProbability.get(i).setText(weatherInfoList.get(i).getPop() + "%");
-        }
     }
 
     void parseXML(String xml) {
@@ -100,18 +89,12 @@ class ReceiveTodayWeather extends AsyncTask<URL, Integer, Long> {
             while (eventType != XmlPullParser.END_DOCUMENT) {
                 if (eventType == XmlPullParser.START_TAG) {
                     tagName = parser.getName();
-                    if (tagName.equals("data")) {
+                    if (tagName.equals("location")) {
                         weatherInfoList.add(new WeatherInfo());
                         onEnd = false;
                         isItemTag1 = true;
                     }
-                } else if(eventType == XmlPullParser.TEXT ) {
-                    if(tagName.equals("city")) {
-
-                    }
-                }
-
-                else if (eventType == XmlPullParser.TEXT && isItemTag1) {
+                } else if (eventType == XmlPullParser.TEXT && isItemTag1) {
                     if (tagName.equals("hour") && !onHour) {
                         weatherInfoList.get(i).setHour(parser.getText());
                         onHour = true;

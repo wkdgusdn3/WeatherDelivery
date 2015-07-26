@@ -9,6 +9,7 @@ public class
 
     public static String city;
     public static String cityCode;
+    public static String cityCode2;
     public static String hour;
     public static String minute;
 
@@ -18,6 +19,7 @@ public class
 
         city = sharedPreferences.getString("CITY", "서울");
         cityCode = sharedPreferences.getString("CITYCODE", "1100000000");
+        cityCode = sharedPreferences.getString("CITYCODE2", "109");
         hour = sharedPreferences.getString("HOUR", "7");
         minute = sharedPreferences.getString("MINUTE", "0");
     }

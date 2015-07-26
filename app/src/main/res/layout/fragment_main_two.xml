@@ -37,41 +37,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="오늘" />
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/mainFragmentTwo_time1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="12시" />
+                android:gravity="center" />
 
             <ImageView
                 android:id="@+id/mainFragmentTwo_weatherIcon1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginLeft="13dp"
-                android:layout_marginRight="13dp"
-                android:layout_weight="1"
-                android:background="@drawable/sun" />
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/mainFragmentTwo_temperature1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="29도" />
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/mainFragmentTwo_rainFallProbability1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="80%" />
+                android:gravity="center" />
         </LinearLayout>
 
         <LinearLayout
@@ -85,41 +80,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="오늘" />
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/mainFragmentTwo_time2"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="12시" />
+                android:gravity="center" />
 
             <ImageView
                 android:id="@+id/mainFragmentTwo_weatherIcon2"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginLeft="13dp"
-                android:layout_marginRight="13dp"
-                android:layout_weight="1"
-                android:background="@drawable/sun" />
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/mainFragmentTwo_temperature2"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="29도" />
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/mainFragmentTwo_rainFallProbability2"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="80%" />
+                android:gravity="center" />
         </LinearLayout>
 
         <LinearLayout
@@ -133,41 +123,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="오늘" />
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/mainFragmentTwo_time3"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="12시" />
+                android:gravity="center" />
 
             <ImageView
                 android:id="@+id/mainFragmentTwo_weatherIcon3"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginLeft="13dp"
-                android:layout_marginRight="13dp"
-                android:layout_weight="1"
-                android:background="@drawable/sun" />
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/mainFragmentTwo_temperature3"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="29도" />
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/mainFragmentTwo_rainFallProbability3"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="80%" />
+                android:gravity="center" />
         </LinearLayout>
 
         <LinearLayout
@@ -181,41 +166,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="오늘" />
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/mainFragmentTwo_time4"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="12시" />
+                android:gravity="center" />
 
             <ImageView
                 android:id="@+id/mainFragmentTwo_weatherIcon4"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginLeft="13dp"
-                android:layout_marginRight="13dp"
-                android:layout_weight="1"
-                android:background="@drawable/sun" />
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/mainFragmentTwo_temperature4"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="29도" />
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/mainFragmentTwo_rainFallProbability4"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="80%" />
+                android:gravity="center" />
         </LinearLayout>
     </LinearLayout>
 
@@ -245,41 +225,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="오늘" />
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/mainFragmentTwo_time5"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="12시" />
+                android:gravity="center" />
 
             <ImageView
                 android:id="@+id/mainFragmentTwo_weatherIcon5"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginLeft="13dp"
-                android:layout_marginRight="13dp"
-                android:layout_weight="1"
-                android:background="@drawable/sun" />
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/mainFragmentTwo_temperature5"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="29도" />
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/mainFragmentTwo_rainFallProbability5"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="80%" />
+                android:gravity="center" />
         </LinearLayout>
 
         <LinearLayout
@@ -293,41 +268,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="오늘" />
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/mainFragmentTwo_time6"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="12시" />
+                android:gravity="center" />
 
             <ImageView
                 android:id="@+id/mainFragmentTwo_weatherIcon6"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginLeft="13dp"
-                android:layout_marginRight="13dp"
-                android:layout_weight="1"
-                android:background="@drawable/sun" />
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/mainFragmentTwo_temperature6"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="29도" />
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/mainFragmentTwo_rainFallProbability6"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="80%" />
+                android:gravity="center" />
         </LinearLayout>
 
         <LinearLayout
@@ -341,41 +311,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="오늘" />
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/mainFragmentTwo_time7"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="12시" />
+                android:gravity="center" />
 
             <ImageView
                 android:id="@+id/mainFragmentTwo_weatherIcon7"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginLeft="13dp"
-                android:layout_marginRight="13dp"
-                android:layout_weight="1"
-                android:background="@drawable/sun" />
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/mainFragmentTwo_temperature7"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="29도" />
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/mainFragmentTwo_rainFallProbability7"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="80%" />
+                android:gravity="center" />
         </LinearLayout>
 
         <LinearLayout
@@ -389,41 +354,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="오늘" />
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/mainFragmentTwo_time8"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="12시" />
+                android:gravity="center" />
 
             <ImageView
                 android:id="@+id/mainFragmentTwo_weatherIcon8"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginLeft="13dp"
-                android:layout_marginRight="13dp"
-                android:layout_weight="1"
-                android:background="@drawable/sun" />
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/mainFragmentTwo_temperature8"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="29도" />
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/mainFragmentTwo_rainFallProbability8"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="80%" />
+                android:gravity="center" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
