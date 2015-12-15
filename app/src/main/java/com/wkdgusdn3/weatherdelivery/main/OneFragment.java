@@ -57,6 +57,7 @@ public class OneFragment extends Fragment {
         textView_rainfallProbability = (TextView) view.findViewById(R.id.mainFragmentOne_rainfallProbability);
         textView_weatherText = (TextView) view.findViewById(R.id.mainFragmentOne_weatherText);
         imageView_weatherIcon = (ImageView) view.findViewById(R.id.mainFragmentOne_weatherIcon);
+
     }
 
     private void setTime() {

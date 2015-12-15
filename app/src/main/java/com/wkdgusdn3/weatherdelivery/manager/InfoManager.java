@@ -4,8 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-public class
-        InfoManager {
+public class InfoManager {
 
     public static String city;
     public static String cityCode;

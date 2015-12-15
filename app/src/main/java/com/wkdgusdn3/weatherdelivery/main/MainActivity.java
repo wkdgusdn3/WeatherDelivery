@@ -1,6 +1,5 @@
 package com.wkdgusdn3.weatherdelivery.main;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -16,7 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.wkdgusdn3.weatherdelivery.R;
-import com.wkdgusdn3.weatherdelivery.alarm.AlarmService;
 import com.wkdgusdn3.weatherdelivery.manager.InfoManager;
 
 import java.util.Locale;
@@ -50,7 +48,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         setContentView(R.layout.activity_main);
 
         InfoManager.setData(getApplicationContext());
-        startService(new Intent(getApplicationContext(), AlarmService.class));
+//        startService(new Intent(getApplicationContext(), AlarmService.class));
 
 //        getSupportActionBar().setDisplayShowHomeEnabled(false);
 //        getSupportActionBar().setDisplayShowTitleEnabled(false);
