@@ -8,29 +8,31 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.wkdgusdn3.weatherdelivery.R;
 import com.wkdgusdn3.weatherdelivery.alarm.AlarmReceiver;
 import com.wkdgusdn3.weatherdelivery.manager.InfoManager;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 
 public class TimeSettingActivity extends ActionBarActivity {
 
-    ArrayList<String> array_hour;
-    ArrayList<String> array_minute;
-    ArrayAdapter<String> adapter_hour;
-    ArrayAdapter<String> adapter_minute;
-    Spinner spinner_hour;
-    Spinner spinner_minute;
+    Button button_ampm;
+    EditText editText_hour;
+    EditText editText_minute;
     Button button_apply;
     Context context;
+    ImageView imageView_hourUp;
+    ImageView imageView_hourDown;
+    ImageView imageView_minuteUp;
+    ImageView imageView_minuteDown;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,36 +41,160 @@ public class TimeSettingActivity extends ActionBarActivity {
 
         context = getApplicationContext();
 
-        setVariable();
+        setView();
+        setVar();
         setOnClickListener();
     }
 
-    void setVariable() {
-        array_hour = new ArrayList<String>();
-        array_minute = new ArrayList<String>();
-
-        setArrayList();
-
-        spinner_hour = (Spinner) findViewById(R.id.timeSetting_hour);
-        spinner_minute = (Spinner) findViewById(R.id.timeSetting_minute);
+    void setView() {
+        button_ampm = (Button) findViewById(R.id.timeSetting_ampm);
+        editText_hour = (EditText) findViewById(R.id.timeSetting_hour);
+        editText_minute = (EditText) findViewById(R.id.timeSetting_minute);
         button_apply = (Button) findViewById(R.id.timeSetting_apply);
+        imageView_hourUp = (ImageView)findViewById(R.id.timeSetting_hourUp);
+        imageView_hourDown = (ImageView)findViewById(R.id.timeSetting_hourDown);
+        imageView_minuteUp = (ImageView)findViewById(R.id.timeSetting_minuteUp);
+        imageView_minuteDown = (ImageView)findViewById(R.id.timeSetting_minuteDown);
+    }
 
-        adapter_hour = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_dropdown_item, array_hour);
-        adapter_minute = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_dropdown_item, array_minute);
+    void setVar() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        int hour = Integer.parseInt(sharedPreferences.getString("HOUR", "0"));
+        int minute = Integer.parseInt(sharedPreferences.getString("MINUTE", "0"));
 
-        spinner_hour.setAdapter(adapter_hour);
-        spinner_minute.setAdapter(adapter_minute);
+        if(hour > 11) hour -= 12;
+
+        editText_hour.setText(hour + "");
+        editText_minute.setText(minute + "");
     }
 
     void setOnClickListener() {
+        button_ampm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (button_ampm.getText().equals("오전"))
+                    button_ampm.setText("오후");
+                else
+                    button_ampm.setText("오전");
+            }
+        });
+
+        editText_hour.addTextChangedListener(new TextWatcher() {
+            int beforeHour;
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                try {
+                    beforeHour = Integer.parseInt(s.toString());
+                } catch (Exception e) {
+                    beforeHour = 0;
+                }
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                int hour;
+                try {
+                    hour = Integer.parseInt(s.toString());
+                } catch (Exception e) {
+                    hour = 0;
+                }
+                if (hour > 11) {
+                    editText_hour.setText(beforeHour + "");
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
+        editText_minute.addTextChangedListener(new TextWatcher() {
+            int beforeMinute;
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                try {
+                    beforeMinute = Integer.parseInt(s.toString());
+                } catch (Exception e) {
+                    beforeMinute = 0;
+                }
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                int hour;
+                try {
+                    hour = Integer.parseInt(s.toString());
+                } catch (Exception e) {
+                    hour = 0;
+                }
+                if (hour > 59) {
+                    editText_minute.setText(beforeMinute + "");
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
+        imageView_hourUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int hour = Integer.parseInt(editText_hour.getText().toString());
+
+                if (hour < 11) {
+                    editText_hour.setText(++hour + "");
+                }
+            }
+        });
+
+        imageView_hourDown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int hour = Integer.parseInt(editText_hour.getText().toString());
+
+                if (hour > 0) {
+                    editText_hour.setText(--hour + "");
+                }
+            }
+        });
+
+        imageView_minuteUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int minute = Integer.parseInt(editText_minute.getText().toString());
+
+                if (minute < 60) {
+                    editText_minute.setText(++minute + "");
+                }
+            }
+        });
+
+        imageView_minuteDown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int minute = Integer.parseInt(editText_minute.getText().toString());
+
+                if(minute > 0) {
+                    editText_minute.setText(--minute + "");
+                }
+            }
+        });
+
         button_apply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                int selectedHour = Integer.parseInt(spinner_hour.getSelectedItem().toString());
-                int selectedMinute = Integer.parseInt(spinner_minute.getSelectedItem().toString());
+                int selectedHour;
+                int selectedMinute;
+
+                if (button_ampm.getText().equals("오전"))
+                    selectedHour = Integer.parseInt(editText_hour.getText().toString());
+                else
+                    selectedHour = Integer.parseInt(editText_hour.getText().toString()) + 12;
+                selectedMinute = Integer.parseInt(editText_minute.getText().toString());
 
                 // 저장된 시간 저장
                 SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -124,93 +250,5 @@ public class TimeSettingActivity extends ActionBarActivity {
                 finish();
             }
         });
-    }
-
-    void setArrayList() {
-        array_hour.add("0");
-        array_hour.add("1");
-        array_hour.add("2");
-        array_hour.add("3");
-        array_hour.add("4");
-        array_hour.add("5");
-        array_hour.add("6");
-        array_hour.add("7");
-        array_hour.add("8");
-        array_hour.add("9");
-        array_hour.add("10");
-        array_hour.add("11");
-        array_hour.add("12");
-        array_hour.add("13");
-        array_hour.add("14");
-        array_hour.add("15");
-        array_hour.add("16");
-        array_hour.add("17");
-        array_hour.add("18");
-        array_hour.add("19");
-        array_hour.add("20");
-        array_hour.add("21");
-        array_hour.add("22");
-        array_hour.add("23");
-
-        array_minute.add("0");
-        array_minute.add("1");
-        array_minute.add("2");
-        array_minute.add("3");
-        array_minute.add("4");
-        array_minute.add("5");
-        array_minute.add("6");
-        array_minute.add("7");
-        array_minute.add("8");
-        array_minute.add("9");
-        array_minute.add("10");
-        array_minute.add("11");
-        array_minute.add("12");
-        array_minute.add("13");
-        array_minute.add("14");
-        array_minute.add("15");
-        array_minute.add("16");
-        array_minute.add("17");
-        array_minute.add("18");
-        array_minute.add("19");
-        array_minute.add("20");
-        array_minute.add("21");
-        array_minute.add("22");
-        array_minute.add("23");
-        array_minute.add("24");
-        array_minute.add("25");
-        array_minute.add("26");
-        array_minute.add("27");
-        array_minute.add("28");
-        array_minute.add("29");
-        array_minute.add("30");
-        array_minute.add("31");
-        array_minute.add("32");
-        array_minute.add("33");
-        array_minute.add("34");
-        array_minute.add("35");
-        array_minute.add("36");
-        array_minute.add("37");
-        array_minute.add("38");
-        array_minute.add("39");
-        array_minute.add("40");
-        array_minute.add("41");
-        array_minute.add("42");
-        array_minute.add("43");
-        array_minute.add("44");
-        array_minute.add("45");
-        array_minute.add("46");
-        array_minute.add("47");
-        array_minute.add("48");
-        array_minute.add("49");
-        array_minute.add("50");
-        array_minute.add("51");
-        array_minute.add("52");
-        array_minute.add("53");
-        array_minute.add("54");
-        array_minute.add("55");
-        array_minute.add("56");
-        array_minute.add("57");
-        array_minute.add("58");
-        array_minute.add("59");
     }
 }

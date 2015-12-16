@@ -66,7 +66,7 @@ class AlarmReceiveWeather extends AsyncTask<URL, Integer, Long> {
 
         Notification.Builder mBuilder = new Notification.Builder(context);
         mBuilder.setTicker("날씨배달!!");
-        mBuilder.setSmallIcon(R.mipmap.app_icon);
+        mBuilder.setSmallIcon(R.drawable.noti_icon);
         mBuilder.setWhen(System.currentTimeMillis());
         mBuilder.setNumber(10);
         mBuilder.setContentTitle("오늘의 날씨!");
@@ -74,7 +74,7 @@ class AlarmReceiveWeather extends AsyncTask<URL, Integer, Long> {
         mBuilder.setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_VIBRATE);
         mBuilder.setContentIntent(pendingIntent);
         mBuilder.setAutoCancel(true);
-q
+
         Notification.BigTextStyle style = new Notification.BigTextStyle(mBuilder);
 
         style.setSummaryText("날씨배달!!");
