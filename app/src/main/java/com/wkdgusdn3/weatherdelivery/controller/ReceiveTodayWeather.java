@@ -2,7 +2,6 @@ package com.wkdgusdn3.weatherdelivery.controller;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -70,7 +69,6 @@ public class ReceiveTodayWeather extends AsyncTask<URL, Integer, Long> {
     }
 
     protected void onPostExecute(Long result) {
-        Log.e("wkdgusdn3", textViewList_date.size() + " " + weatherInfoList.size() );
         for(int i=0; i<textViewList_date.size(); i++) {
             textViewList_date.get(i).setText(setDate(weatherInfoList.get(i).getHour()));
             textViewList_time.get(i).setText(setTime(weatherInfoList.get(i).getHour()));
