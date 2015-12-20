@@ -15,9 +15,9 @@ import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 import com.wkdgusdn3.weatherdelivery.R;
-import com.wkdgusdn3.weatherdelivery.item.WeatherInfo;
-import com.wkdgusdn3.weatherdelivery.main.MainActivity;
 import com.wkdgusdn3.weatherdelivery.manager.InfoManager;
+import com.wkdgusdn3.weatherdelivery.model.WeatherInfo;
+import com.wkdgusdn3.weatherdelivery.view.activity.MainActivity;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;

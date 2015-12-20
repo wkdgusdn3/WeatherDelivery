@@ -1,11 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/locationSetting_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@color/color_sky"
+        android:contentInsetStart="0dp"
+        app:contentInsetStart="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/locationSetting_pre"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginLeft="8dp"
+                android:gravity="center"
+                android:text="이전"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="위치설정"
+                android:textColor="#ffffff" />
+
+            <!--<TextView-->
+            <!--android:id="@+id/locationSetting_confirm"-->
+            <!--android:layout_width="44dp"-->
+            <!--android:layout_height="44dp"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_marginRight="8dp"-->
+            <!--android:gravity="center"-->
+            <!--android:text="확인"-->
+            <!--android:textColor="#ffffff" />-->
+
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
 
     <ListView
         android:id="@+id/locationSetting_listVIew"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_marginTop="4dp"
+        android:background="#ffffff" />
 
-s</LinearLayout>
+</LinearLayout>

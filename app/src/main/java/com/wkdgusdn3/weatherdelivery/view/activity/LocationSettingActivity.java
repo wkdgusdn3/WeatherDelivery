@@ -1,13 +1,15 @@
-package com.wkdgusdn3.weatherdelivery.location;
+package com.wkdgusdn3.weatherdelivery.view.activity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wkdgusdn3.weatherdelivery.R;
@@ -17,11 +19,18 @@ public class LocationSettingActivity extends ActionBarActivity {
 
     ListView listView;
     ArrayAdapter<String> adapter;
+    TextView textView_pre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_setting);
+
+        Toolbar toolbar = (Toolbar)findViewById(R.id.locationSetting_toolbar);
+        setSupportActionBar(toolbar);
+
+        setView();
+        setListener();
 
         adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.item_region);
 
@@ -39,6 +48,19 @@ public class LocationSettingActivity extends ActionBarActivity {
         adapter.add("광주");
         adapter.add("부산");
         adapter.add("제주");
+    }
+
+    void setView() {
+        textView_pre = (TextView)findViewById(R.id.locationSetting_pre);
+    }
+
+    void setListener() {
+        textView_pre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     // 아이템 터치 이벤트

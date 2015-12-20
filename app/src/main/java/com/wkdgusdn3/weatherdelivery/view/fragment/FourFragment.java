@@ -1,4 +1,4 @@
-package com.wkdgusdn3.weatherdelivery.main;
+package com.wkdgusdn3.weatherdelivery.view.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,9 +10,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.wkdgusdn3.weatherdelivery.R;
-import com.wkdgusdn3.weatherdelivery.location.LocationSettingActivity;
+import com.wkdgusdn3.weatherdelivery.view.activity.LocationSettingActivity;
 import com.wkdgusdn3.weatherdelivery.manager.InfoManager;
-import com.wkdgusdn3.weatherdelivery.time.TimeSettingActivity;
+import com.wkdgusdn3.weatherdelivery.view.activity.TimeSettingActivity;
 
 public class FourFragment extends Fragment implements View.OnClickListener{
 

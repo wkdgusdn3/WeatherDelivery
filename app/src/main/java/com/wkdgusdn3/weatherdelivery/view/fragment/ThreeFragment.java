@@ -1,4 +1,4 @@
-package com.wkdgusdn3.weatherdelivery.main;
+package com.wkdgusdn3.weatherdelivery.view.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

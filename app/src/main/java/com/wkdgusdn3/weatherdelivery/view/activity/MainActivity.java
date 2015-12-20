@@ -1,4 +1,4 @@
-package com.wkdgusdn3.weatherdelivery.main;
+package com.wkdgusdn3.weatherdelivery.view.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,6 +15,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.wkdgusdn3.weatherdelivery.R;
+import com.wkdgusdn3.weatherdelivery.view.fragment.FourFragment;
+import com.wkdgusdn3.weatherdelivery.view.fragment.OneFragment;
+import com.wkdgusdn3.weatherdelivery.view.fragment.ThreeFragment;
+import com.wkdgusdn3.weatherdelivery.view.fragment.TwoFragment;
 import com.wkdgusdn3.weatherdelivery.manager.InfoManager;
 
 import java.util.Locale;

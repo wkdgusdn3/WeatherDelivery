@@ -1,11 +1,11 @@
 package com.wkdgusdn3.weatherdelivery.model;
 
 public class WeatherInfo {
-    protected String hour;  // 시간
-    protected String temp;  // 온도
-    protected String wfKor; // 상태
-    protected String pop; // 강수확률
-    protected String reh; // 습도
+    private String hour;  // 시간
+    private String temp;  // 온도
+    private String wfKor; // 상태
+    private String pop; // 강수확률
+    private String reh; // 습도
 
     public String getReh() {
         return reh;

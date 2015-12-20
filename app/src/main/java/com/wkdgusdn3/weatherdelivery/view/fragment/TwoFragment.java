@@ -1,4 +1,4 @@
-package com.wkdgusdn3.weatherdelivery.main;
+package com.wkdgusdn3.weatherdelivery.view.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.wkdgusdn3.weatherdelivery.R;
+import com.wkdgusdn3.weatherdelivery.controller.ReceiveTodayWeather;
 import com.wkdgusdn3.weatherdelivery.manager.InfoManager;
 
 import java.util.ArrayList;
@@ -29,7 +30,8 @@ public class TwoFragment extends Fragment {
 
         view = inflater.inflate(R.layout.fragment_main_two, container, false);
 
-        setVariable();
+        setView();
+
         new ReceiveTodayWeather(view.getContext(), textViewList_date,
                 textViewList_time, imageViewList_weatherIcon,
                 textViewList_temperature, textViewList_rainFallProbability).execute();
@@ -38,7 +40,14 @@ public class TwoFragment extends Fragment {
         return view;
     }
 
-    private void setVariable() {
+    private void setView() {
+
+        textViewList_date.clear();
+        textViewList_time.clear();
+        imageViewList_weatherIcon.clear();
+        textViewList_temperature.clear();
+        textViewList_rainFallProbability.clear();
+
         textView_location = (TextView)view.findViewById(R.id.mainFragmentTwo_location);
         textViewList_date.add((TextView)view.findViewById(R.id.mainFragmentTwo_date1));
         textViewList_date.add((TextView)view.findViewById(R.id.mainFragmentTwo_date2));

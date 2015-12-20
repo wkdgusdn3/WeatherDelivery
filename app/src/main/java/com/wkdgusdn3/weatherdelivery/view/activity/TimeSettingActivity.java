@@ -1,4 +1,4 @@
-package com.wkdgusdn3.weatherdelivery.time;
+package com.wkdgusdn3.weatherdelivery.view.activity;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -8,12 +8,15 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wkdgusdn3.weatherdelivery.R;
@@ -27,17 +30,21 @@ public class TimeSettingActivity extends ActionBarActivity {
     Button button_ampm;
     EditText editText_hour;
     EditText editText_minute;
-    Button button_apply;
     Context context;
     ImageView imageView_hourUp;
     ImageView imageView_hourDown;
     ImageView imageView_minuteUp;
     ImageView imageView_minuteDown;
+    TextView textView_pre;
+    TextView textView_confirm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_time_setting);
+
+        Toolbar toolbar = (Toolbar)findViewById(R.id.timeSetting_toolbar);
+        setSupportActionBar(toolbar);
 
         context = getApplicationContext();
 
@@ -50,11 +57,15 @@ public class TimeSettingActivity extends ActionBarActivity {
         button_ampm = (Button) findViewById(R.id.timeSetting_ampm);
         editText_hour = (EditText) findViewById(R.id.timeSetting_hour);
         editText_minute = (EditText) findViewById(R.id.timeSetting_minute);
-        button_apply = (Button) findViewById(R.id.timeSetting_apply);
         imageView_hourUp = (ImageView)findViewById(R.id.timeSetting_hourUp);
         imageView_hourDown = (ImageView)findViewById(R.id.timeSetting_hourDown);
         imageView_minuteUp = (ImageView)findViewById(R.id.timeSetting_minuteUp);
         imageView_minuteDown = (ImageView)findViewById(R.id.timeSetting_minuteDown);
+        textView_pre = (TextView)findViewById(R.id.timeSetting_pre);
+        textView_confirm = (TextView)findViewById(R.id.timeSetting_confirm);
+
+        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(editText_hour, InputMethodManager.SHOW_FORCED);
     }
 
     void setVar() {
@@ -183,7 +194,14 @@ public class TimeSettingActivity extends ActionBarActivity {
             }
         });
 
-        button_apply.setOnClickListener(new View.OnClickListener() {
+        textView_pre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        textView_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

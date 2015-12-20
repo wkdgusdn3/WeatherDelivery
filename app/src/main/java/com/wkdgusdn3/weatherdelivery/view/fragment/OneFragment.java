@@ -1,4 +1,4 @@
-package com.wkdgusdn3.weatherdelivery.main;
+package com.wkdgusdn3.weatherdelivery.view.fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.wkdgusdn3.weatherdelivery.R;
+import com.wkdgusdn3.weatherdelivery.controller.ReceiveCurrentWeather;
 import com.wkdgusdn3.weatherdelivery.manager.InfoManager;
 
 import java.util.Calendar;
