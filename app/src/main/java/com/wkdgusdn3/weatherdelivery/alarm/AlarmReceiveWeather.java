@@ -16,7 +16,7 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 import com.wkdgusdn3.weatherdelivery.R;
 import com.wkdgusdn3.weatherdelivery.manager.InfoManager;
-import com.wkdgusdn3.weatherdelivery.model.WeatherInfo;
+import com.wkdgusdn3.weatherdelivery.model.TodayWeatherInfo;
 import com.wkdgusdn3.weatherdelivery.view.activity.MainActivity;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -29,7 +29,7 @@ import java.util.Calendar;
 
 class AlarmReceiveWeather extends AsyncTask<URL, Integer, Long> {
     Context context;
-    ArrayList<WeatherInfo> weatherInfo = new ArrayList<WeatherInfo>();
+    ArrayList<TodayWeatherInfo> todayWeatherInfo = new ArrayList<TodayWeatherInfo>();
     String weatherText = "";
 
     public AlarmReceiveWeather(Context context) {
@@ -135,21 +135,21 @@ class AlarmReceiveWeather extends AsyncTask<URL, Integer, Long> {
                 if (eventType == XmlPullParser.START_TAG) {
                     tagName = parser.getName();
                     if (tagName.equals("data")) {
-                        weatherInfo.add(new WeatherInfo());
+                        todayWeatherInfo.add(new TodayWeatherInfo());
                         onEnd = false;
                         isItemTag1 = true;
                     }
                 } else if (eventType == XmlPullParser.TEXT && isItemTag1) {
                     if (tagName.equals("hour") && !onHour) {
-                        weatherInfo.get(i).setHour(parser.getText());
+                        todayWeatherInfo.get(i).setHour(parser.getText());
                         onHour = true;
                     }
                     if (tagName.equals("temp") && !onTem) {
-                        weatherInfo.get(i).setTemp(parser.getText());
+                        todayWeatherInfo.get(i).setTemp(parser.getText());
                         onTem = true;
                     }
                     if (tagName.equals("wfKor") && !onWfKor) {
-                        weatherInfo.get(i).setWfKor(parser.getText());
+                        todayWeatherInfo.get(i).setWfKor(parser.getText());
                         onWfKor = true;
                     }
                 } else if (eventType == XmlPullParser.END_TAG) {
@@ -170,7 +170,7 @@ class AlarmReceiveWeather extends AsyncTask<URL, Integer, Long> {
         }
 
         for (int i = 0; i < 5; i++) {
-            weatherText = weatherText + weatherInfo.get(i).getHour() + "시 " + weatherInfo.get(i).getTemp() + "º " + weatherInfo.get(i).getWfKor() + "\n";
+            weatherText = weatherText + todayWeatherInfo.get(i).getHour() + "시 " + todayWeatherInfo.get(i).getTemp() + "º " + todayWeatherInfo.get(i).getWfKor() + "\n";
         }
     }
 }

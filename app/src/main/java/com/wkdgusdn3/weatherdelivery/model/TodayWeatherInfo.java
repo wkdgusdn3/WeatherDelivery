@@ -1,11 +1,20 @@
 package com.wkdgusdn3.weatherdelivery.model;
 
-public class WeatherInfo {
+public class TodayWeatherInfo {
     private String hour;  // 시간
+    private String day;
     private String temp;  // 온도
     private String wfKor; // 상태
     private String pop; // 강수확률
     private String reh; // 습도
+
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
+    }
 
     public String getReh() {
         return reh;

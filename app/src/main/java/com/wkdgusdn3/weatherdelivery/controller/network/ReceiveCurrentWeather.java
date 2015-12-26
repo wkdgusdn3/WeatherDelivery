@@ -1,4 +1,4 @@
-package com.wkdgusdn3.weatherdelivery.controller;
+package com.wkdgusdn3.weatherdelivery.controller.network;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -10,7 +10,7 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 import com.wkdgusdn3.weatherdelivery.R;
 import com.wkdgusdn3.weatherdelivery.manager.InfoManager;
-import com.wkdgusdn3.weatherdelivery.model.WeatherInfo;
+import com.wkdgusdn3.weatherdelivery.model.TodayWeatherInfo;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -20,7 +20,7 @@ import java.net.URL;
 
 public class ReceiveCurrentWeather extends AsyncTask<URL, Integer, Long> {
     Context context;
-    WeatherInfo weatherInfo = new WeatherInfo();
+    TodayWeatherInfo todayWeatherInfo = new TodayWeatherInfo();
     TextView textView_temperature;
     TextView textView_humidity;
     TextView textView_rainfallProbability;
@@ -64,11 +64,11 @@ public class ReceiveCurrentWeather extends AsyncTask<URL, Integer, Long> {
 
     protected void onPostExecute(Long result) {
 
-        textView_temperature.setText(weatherInfo.getTemp() + "º");
-        textView_humidity.setText(weatherInfo.getReh() + "%");
-        textView_rainfallProbability.setText(weatherInfo.getPop() + "%");
-        textView_weatherText.setText(weatherInfo.getWfKor());
-        imageView_weatherIcon.setBackgroundResource(setWeatherIcon(weatherInfo.getWfKor()));
+        textView_temperature.setText(todayWeatherInfo.getTemp() + "º");
+        textView_humidity.setText(todayWeatherInfo.getReh() + "%");
+        textView_rainfallProbability.setText(todayWeatherInfo.getPop() + "%");
+        textView_weatherText.setText(todayWeatherInfo.getWfKor());
+        imageView_weatherIcon.setBackgroundResource(setWeatherIcon(todayWeatherInfo.getWfKor()));
 
     }
 
@@ -100,23 +100,23 @@ public class ReceiveCurrentWeather extends AsyncTask<URL, Integer, Long> {
                     }
                 } else if (eventType == XmlPullParser.TEXT && isItemTag1) {
                     if (tagName.equals("hour") && !onHour) {
-                        weatherInfo.setHour(parser.getText());
+                        todayWeatherInfo.setHour(parser.getText());
                         onHour = true;
                     }
                     if (tagName.equals("temp") && !onTem) {
-                        weatherInfo.setTemp(parser.getText());
+                        todayWeatherInfo.setTemp(parser.getText());
                         onTem = true;
                     }
                     if (tagName.equals("wfKor") && !onWfKor) {
-                        weatherInfo.setWfKor(parser.getText());
+                        todayWeatherInfo.setWfKor(parser.getText());
                         onWfKor = true;
                     }
                     if(tagName.equals("pop") && !onPop) {
-                        weatherInfo.setPop(parser.getText());
+                        todayWeatherInfo.setPop(parser.getText());
                         onPop = true;
                     }
                     if (tagName.equals("reh") && !onReh) {
-                        weatherInfo.setReh(parser.getText());
+                        todayWeatherInfo.setReh(parser.getText());
                         onReh = true;
                         break;
                     }

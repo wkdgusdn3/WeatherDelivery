@@ -3,43 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="12dp"
-        android:layout_height="12dp"
-        android:layout_marginTop="20dp"
-        android:layout_toLeftOf="@+id/mainFragmentOne_location"
-        android:background="@drawable/location" />
-
-    <TextView
-        android:id="@+id/mainFragmentOne_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp" />
-
-    <TextView
-        android:id="@+id/mainFragmentOne_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="75dp"
-        android:textColor="#000000"
-        android:textSize="50sp" />
-
-    <TextView
-        android:id="@+id/mainFragmentOne_ampm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="115dp"
-        android:layout_toRightOf="@+id/mainFragmentOne_time"
-        android:textColor="#000000" />
-
     <RelativeLayout
         android:id="@+id/mainFragmentOne_weatherCircle"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
         android:background="@drawable/circle">
 
         <ImageView

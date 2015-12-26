@@ -18,7 +18,7 @@ public class InfoManager {
 
         city = sharedPreferences.getString("CITY", "서울");
         cityCode = sharedPreferences.getString("CITYCODE", "1100000000");
-        cityCode = sharedPreferences.getString("CITYCODE2", "109");
+        cityCode2 = sharedPreferences.getString("CITYCODE2", "109");
         hour = sharedPreferences.getString("HOUR", "7");
         minute = sharedPreferences.getString("MINUTE", "0");
     }

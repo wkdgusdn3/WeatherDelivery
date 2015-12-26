@@ -105,21 +105,21 @@ public class LocationSettingActivity extends ActionBarActivity {
     }
 
     String getCityCode2(String city) {
-        if(city.equals("서울")) {
+        if (city.equals("서울")) {
             return "109";
-        } else if(city.equals("인천")) {
+        } else if (city.equals("인천")) {
             return "109";
-        } else if(city.equals("대전")) {
+        } else if (city.equals("대전")) {
             return "133";
-        } else if(city.equals("대구")) {
+        } else if (city.equals("대구")) {
             return "143";
-        } else if(city.equals("울산")) {
+        } else if (city.equals("울산")) {
             return "159";
-        } else if(city.equals("광주")) {
+        } else if (city.equals("광주")) {
             return "156";
-        } else if(city.equals("부산")) {
+        } else if (city.equals("부산")) {
             return "159";
-        } else if(city.equals("제주")) {
+        } else if (city.equals("제주")) {
             return "184";
         } else {
             return "109";

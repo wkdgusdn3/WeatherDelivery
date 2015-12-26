@@ -1,388 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="30dp">
 
-    <ImageView
-        android:layout_width="12dp"
-        android:layout_height="12dp"
-        android:layout_marginTop="20dp"
-        android:layout_toLeftOf="@+id/mainFragmentTwo_location"
-        android:background="@drawable/location" />
-
-    <TextView
-        android:id="@+id/mainFragmentTwo_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp" />
-
-    <LinearLayout
-        android:id="@+id/mainFragmentTwo_firstLayout"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="50dp"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_width="0dp"
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ffffff" />
+
+        <View
+            android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:background="#ffffff" />
 
-            <TextView
-                android:id="@+id/mainFragmentTwo_date1"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="#ffffff" />
 
-            <TextView
-                android:id="@+id/mainFragmentTwo_time1"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center" />
-
-            <ImageView
-                android:id="@+id/mainFragmentTwo_weatherIcon1"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_weight="1" />
-
-            <TextView
-                android:id="@+id/mainFragmentTwo_temperature1"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center" />
-
-            <TextView
-                android:id="@+id/mainFragmentTwo_rainFallProbability1"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
+        <View
+            android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_alignParentRight="true"
+            android:background="#ffffff" />
 
-            <TextView
-                android:id="@+id/mainFragmentTwo_date2"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center" />
-
-            <TextView
-                android:id="@+id/mainFragmentTwo_time2"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center" />
-
-            <ImageView
-                android:id="@+id/mainFragmentTwo_weatherIcon2"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_weight="1" />
-
-            <TextView
-                android:id="@+id/mainFragmentTwo_temperature2"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center" />
-
-            <TextView
-                android:id="@+id/mainFragmentTwo_rainFallProbability2"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
+        <ListView
+            android:id="@+id/mainFragmentTwo_listView"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_margin="1dp"
+            android:background="#55000000"
+            android:divider="#ffffff"
+            android:dividerHeight="0dp"
+            android:listSelector="#00000000" />
 
-            <TextView
-                android:id="@+id/mainFragmentTwo_date3"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center" />
+    </RelativeLayout>
 
-            <TextView
-                android:id="@+id/mainFragmentTwo_time3"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center" />
 
-            <ImageView
-                android:id="@+id/mainFragmentTwo_weatherIcon3"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_weight="1" />
-
-            <TextView
-                android:id="@+id/mainFragmentTwo_temperature3"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center" />
-
-            <TextView
-                android:id="@+id/mainFragmentTwo_rainFallProbability3"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/mainFragmentTwo_date4"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center" />
-
-            <TextView
-                android:id="@+id/mainFragmentTwo_time4"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center" />
-
-            <ImageView
-                android:id="@+id/mainFragmentTwo_weatherIcon4"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_weight="1" />
-
-            <TextView
-                android:id="@+id/mainFragmentTwo_temperature4"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center" />
-
-            <TextView
-                android:id="@+id/mainFragmentTwo_rainFallProbability4"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@+id/mainFragmentTwo_firstLayout"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="#000000" />
-
-    <LinearLayout
-        android:id="@+id/mainFragmentTwo_secondLayout"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_below="@+id/mainFragmentTwo_firstLayout"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/mainFragmentTwo_date5"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center" />
-
-            <TextView
-                android:id="@+id/mainFragmentTwo_time5"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center" />
-
-            <ImageView
-                android:id="@+id/mainFragmentTwo_weatherIcon5"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_weight="1" />
-
-            <TextView
-                android:id="@+id/mainFragmentTwo_temperature5"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center" />
-
-            <TextView
-                android:id="@+id/mainFragmentTwo_rainFallProbability5"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/mainFragmentTwo_date6"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center" />
-
-            <TextView
-                android:id="@+id/mainFragmentTwo_time6"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center" />
-
-            <ImageView
-                android:id="@+id/mainFragmentTwo_weatherIcon6"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_weight="1" />
-
-            <TextView
-                android:id="@+id/mainFragmentTwo_temperature6"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center" />
-
-            <TextView
-                android:id="@+id/mainFragmentTwo_rainFallProbability6"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/mainFragmentTwo_date7"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center" />
-
-            <TextView
-                android:id="@+id/mainFragmentTwo_time7"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center" />
-
-            <ImageView
-                android:id="@+id/mainFragmentTwo_weatherIcon7"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_weight="1" />
-
-            <TextView
-                android:id="@+id/mainFragmentTwo_temperature7"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center" />
-
-            <TextView
-                android:id="@+id/mainFragmentTwo_rainFallProbability7"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/mainFragmentTwo_date8"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center" />
-
-            <TextView
-                android:id="@+id/mainFragmentTwo_time8"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center" />
-
-            <ImageView
-                android:id="@+id/mainFragmentTwo_weatherIcon8"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_weight="1" />
-
-            <TextView
-                android:id="@+id/mainFragmentTwo_temperature8"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center" />
-
-            <TextView
-                android:id="@+id/mainFragmentTwo_rainFallProbability8"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center" />
-        </LinearLayout>
-    </LinearLayout>
 </RelativeLayout>
