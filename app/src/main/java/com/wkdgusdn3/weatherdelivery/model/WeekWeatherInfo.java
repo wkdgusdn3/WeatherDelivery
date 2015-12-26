@@ -6,6 +6,18 @@ public class WeekWeatherInfo {
     private String tmn;
     private String tmx;
 
+    private String month;
+    private String day;
+
+    public WeekWeatherInfo() {}
+
+    public WeekWeatherInfo(String tmEf, String wf, String tmn, String tmx) {
+        this.tmEf = tmEf;
+        this.wf = wf;
+        this.tmn = tmn;
+        this. tmx = tmx;
+    }
+
     public String getTmEf() {
         return tmEf;
     }

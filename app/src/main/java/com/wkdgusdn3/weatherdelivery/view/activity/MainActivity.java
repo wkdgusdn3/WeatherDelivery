@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
         InfoManager.setData(getApplicationContext());
         setView();
+        setListener();
         setTime();
         textView_location.setText(InfoManager.city);
 
