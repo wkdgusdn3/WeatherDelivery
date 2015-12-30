@@ -120,7 +120,7 @@ public class TodayWeatherListViewAdapter extends BaseAdapter {
         } else if(weather.equals("구름 조금")) {
             return R.drawable.cloud_white;
         } else if(weather.equals("구름 많음")) {
-            return R.drawable.clouds;
+            return R.drawable.clouds_white;
         } else if(weather.equals("흐림")) {
             return R.drawable.partly_cloudy_white;
         } else if(weather.equals("비")) {
