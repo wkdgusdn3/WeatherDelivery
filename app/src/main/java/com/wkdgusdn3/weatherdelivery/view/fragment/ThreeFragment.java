@@ -32,6 +32,12 @@ public class ThreeFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+    }
+
     private void setView() {
         listView_weekWeather = (ListView)view.findViewById(R.id.mainFragmentThree_listView);
     }

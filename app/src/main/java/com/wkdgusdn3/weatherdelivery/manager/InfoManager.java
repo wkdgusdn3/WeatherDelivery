@@ -7,6 +7,7 @@ import android.preference.PreferenceManager;
 public class InfoManager {
 
     public static String city;
+    public static String city2;
     public static String cityCode;
     public static String cityCode2;
     public static String hour;
@@ -16,7 +17,8 @@ public class InfoManager {
         SharedPreferences sharedPreferences;
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
 
-        city = sharedPreferences.getString("CITY", "서울");
+        city = sharedPreferences.getString("CITY", "서울특별시 중구 황학동");
+        city2 = sharedPreferences.getString("CITY2", "서울");
         cityCode = sharedPreferences.getString("CITYCODE", "1100000000");
         cityCode2 = sharedPreferences.getString("CITYCODE2", "109");
         hour = sharedPreferences.getString("HOUR", "7");

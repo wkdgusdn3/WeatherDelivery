@@ -41,7 +41,7 @@ public class FourFragment extends Fragment implements View.OnClickListener{
         super.onResume();
 
         textView_reservationInfo.setText(InfoManager.hour + "시 " + InfoManager.minute + "분에\n" +
-                InfoManager.city + "지역의 날씨를 배달합니다.");
+                InfoManager.city + "의 날씨를 배달합니다.");
     }
 
     private void setVariable() {

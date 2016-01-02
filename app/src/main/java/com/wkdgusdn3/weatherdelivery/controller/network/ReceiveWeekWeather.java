@@ -59,6 +59,7 @@ public class ReceiveWeekWeather extends AsyncTask<URL, Integer, Long> {
         }
     }
 
+    // 오늘 내일 날씨를 받아옴
     private void receiveTodayWeather() {
         String url = "http://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=" + InfoManager.cityCode;
 
@@ -78,6 +79,7 @@ public class ReceiveWeekWeather extends AsyncTask<URL, Integer, Long> {
         }
     }
 
+    // 주간 날씨를 받아옴
     private void receiveWeekWeather() {
         String url = "http://www.kma.go.kr/weather/forecast/mid-term-rss3.jsp?stnId=" + InfoManager.cityCode2;
 
@@ -202,7 +204,7 @@ public class ReceiveWeekWeather extends AsyncTask<URL, Integer, Long> {
 
                     if (tagName.equals("city")) {
                         eventType = parser.next();
-                        if (parser.getText().equals(InfoManager.city)) {
+                        if (parser.getText().equals(InfoManager.city2)) {
                             onCity = true;
                         } else {
                             if (onCity) { // 이미 parsing을 끝냈을 경우
@@ -282,16 +284,16 @@ public class ReceiveWeekWeather extends AsyncTask<URL, Integer, Long> {
         calendar.add(Calendar.DATE, 1);
 
         realWeathers.add(new WeekWeatherInfo(
-                (calendar.get(Calendar.MONTH) + 1) + "/" +
-                        calendar.get(Calendar.DAY_OF_MONTH) +
+                (processMonthDay(calendar.get(Calendar.MONTH) + 1)) + "/" +
+                        processMonthDay(calendar.get(Calendar.DAY_OF_MONTH)) +
                         getDayOfWeek(Integer.toString(calendar.get(Calendar.DAY_OF_WEEK))),
                 tomorrowWf, tomorrowMin + "", tomorrowMax + ""));
 
         calendar.add(Calendar.DATE, 1);
 
         realWeathers.add(new WeekWeatherInfo(
-                (calendar.get(Calendar.MONTH) + 1) + "/" +
-                        calendar.get(Calendar.DAY_OF_MONTH) +
+                (processMonthDay(calendar.get(Calendar.MONTH) + 1)) + "/" +
+                        processMonthDay(calendar.get(Calendar.DAY_OF_MONTH)) +
                         getDayOfWeek(Integer.toString(calendar.get(Calendar.DAY_OF_WEEK))),
                 afterTomorrowWf, afterTomorrowMin + "", afterTomorrowMax + ""));
     }
@@ -366,5 +368,13 @@ public class ReceiveWeekWeather extends AsyncTask<URL, Integer, Long> {
         } else {
             return R.drawable.sun;
         }
+    }
+
+    private String processMonthDay(int number) {
+
+        if (number < 10)
+            return "0" + number;
+        else
+            return "" + number;
     }
 }

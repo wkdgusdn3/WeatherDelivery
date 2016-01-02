@@ -75,6 +75,13 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(mViewPager);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        textView_location.setText(InfoManager.city);
+    }
+
     private void setView() {
         textView_time = (TextView)findViewById(R.id.mainActivity_time);
         textView_ampm = (TextView)findViewById(R.id.mainActivity_ampm);
