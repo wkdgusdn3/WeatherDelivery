@@ -2,7 +2,9 @@ package com.wkdgusdn3.weatherdelivery.controller.network;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.squareup.okhttp.OkHttpClient;
@@ -26,10 +28,12 @@ public class ReceiveCurrentWeather extends AsyncTask<URL, Integer, Long> {
     TextView textView_rainfallProbability;
     TextView textView_weatherText;
     ImageView imageView_weatherIcon;
+    ProgressBar progressBar;
 
     public ReceiveCurrentWeather(Context context, TextView textView_temperature,
                                  TextView textView_humidity, TextView textView_rainfallProbability,
-                                 TextView textView_weatherText, ImageView imageView_weatherIcon) {
+                                 TextView textView_weatherText, ImageView imageView_weatherIcon,
+                                 ProgressBar progressBar) {
 
         this.context = context;
         this.textView_temperature = textView_temperature;
@@ -37,6 +41,7 @@ public class ReceiveCurrentWeather extends AsyncTask<URL, Integer, Long> {
         this.textView_rainfallProbability = textView_rainfallProbability;
         this.textView_weatherText = textView_weatherText;
         this.imageView_weatherIcon = imageView_weatherIcon;
+        this.progressBar = progressBar;
     }
 
     protected Long doInBackground(URL... urls) {
@@ -69,6 +74,8 @@ public class ReceiveCurrentWeather extends AsyncTask<URL, Integer, Long> {
         textView_rainfallProbability.setText(todayWeatherInfo.getPop() + "%");
         textView_weatherText.setText(todayWeatherInfo.getWfKor());
         imageView_weatherIcon.setBackgroundResource(setWeatherIcon(todayWeatherInfo.getWfKor()));
+
+        progressBar.setVisibility(View.INVISIBLE);
 
     }
 

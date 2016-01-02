@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.wkdgusdn3.weatherdelivery.R;
@@ -21,6 +22,7 @@ public class OneFragment extends Fragment {
     TextView textView_rainfallProbability;
     TextView textView_weatherText;
     ImageView imageView_weatherIcon;
+    ProgressBar progressBar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -32,7 +34,8 @@ public class OneFragment extends Fragment {
 
         new ReceiveCurrentWeather(view.getContext(), textView_temperature,
                 textView_humidity, textView_rainfallProbability,
-                textView_weatherText, imageView_weatherIcon).execute();
+                textView_weatherText, imageView_weatherIcon,
+                progressBar).execute();
 
         return view;
     }
@@ -44,6 +47,6 @@ public class OneFragment extends Fragment {
         textView_rainfallProbability = (TextView) view.findViewById(R.id.mainFragmentOne_rainfallProbability);
         textView_weatherText = (TextView) view.findViewById(R.id.mainFragmentOne_weatherText);
         imageView_weatherIcon = (ImageView) view.findViewById(R.id.mainFragmentOne_weatherIcon);
-
+        progressBar = (ProgressBar)view.findViewById(R.id.mainFragmentOne_progressBar);
     }
 }

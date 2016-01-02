@@ -42,7 +42,7 @@ public class LocationSettingActivity extends ActionBarActivity {
         item_address = getResources().getStringArray(R.array.address);
         item_code = getResources().getStringArray(R.array.code);
 
-        arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, item_address);
+        arrayAdapter = new ArrayAdapter<String>(this, R.layout.item_address, item_address);
         listView.setAdapter(arrayAdapter);
 
         listView.setTextFilterEnabled(true);

@@ -2,12 +2,13 @@ package com.wkdgusdn3.weatherdelivery.controller.network;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
-import com.wkdgusdn3.weatherdelivery.R;
 import com.wkdgusdn3.weatherdelivery.controller.adapter.WeekWeatherListViewAdapter;
 import com.wkdgusdn3.weatherdelivery.manager.InfoManager;
 import com.wkdgusdn3.weatherdelivery.model.Time;
@@ -30,14 +31,17 @@ public class ReceiveWeekWeather extends AsyncTask<URL, Integer, Long> {
     ArrayList<TodayWeatherInfo> todayWeathers = new ArrayList<TodayWeatherInfo>();
     ArrayList<WeekWeatherInfo> weekWeathers = new ArrayList<WeekWeatherInfo>();
     ArrayList<WeekWeatherInfo> realWeathers = new ArrayList<WeekWeatherInfo>();
+    ProgressBar progressBar;
 
     public ReceiveWeekWeather(Context context,
                               ListView listView_weekWeather,
-                              WeekWeatherListViewAdapter weekWeatherLVA) {
+                              WeekWeatherListViewAdapter weekWeatherLVA,
+                              ProgressBar progressBar) {
 
         this.context = context;
         this.listView_weekWeather = listView_weekWeather;
         this.weekWeatherLVA = weekWeatherLVA;
+        this.progressBar = progressBar;
     }
 
     protected Long doInBackground(URL... urls) {
@@ -57,6 +61,8 @@ public class ReceiveWeekWeather extends AsyncTask<URL, Integer, Long> {
         for (int i = 0; i < realWeathers.size(); i++) {
             weekWeatherLVA.addWeekWeather(realWeathers.get(i));
         }
+
+        progressBar.setVisibility(View.INVISIBLE);
     }
 
     // 오늘 내일 날씨를 받아옴
@@ -257,45 +263,61 @@ public class ReceiveWeekWeather extends AsyncTask<URL, Integer, Long> {
     }
 
     private void setTodayWeather() {    // 일간 날씨 parsing한 object를 처리
-        String tomorrowMax = null;
-        String tomorrowMin = null;
-        String tomorrowWf = null;
-        String afterTomorrowMax = null;
-        String afterTomorrowMin = null;
-        String afterTomorrowWf = null;
+        String day1Max = null;
+        String day1Min = null;
+        String day1Wf = null;
+        String day2Max = null;
+        String day2Min = null;
+        String day2Wf = null;
+        String day3Max = null;
+        String day3Min = null;
+        String day3Wf = null;
+
+        Calendar calendar = Calendar.getInstance();
 
         for (int i = 0; i < todayWeathers.size(); i++) {
-            if (todayWeathers.get(i).getDay().equals("1")) {
-                if (tomorrowWf == null) {
-                    tomorrowWf = todayWeathers.get(i).getWfKor();
-                    tomorrowMax = todayWeathers.get(i).getTmx();
-                    tomorrowMin = todayWeathers.get(i).getTmn();
+            if (todayWeathers.get(i).getDay().equals("0")) {
+                if (day1Wf == null) {
+                    day1Wf = todayWeathers.get(i).getWfKor();
+                    day1Max = todayWeathers.get(i).getTmx();
+                    day1Min = todayWeathers.get(i).getTmn();
+
+                    realWeathers.add(new WeekWeatherInfo(
+                            (processMonthDay(calendar.get(Calendar.MONTH) + 1)) + "/" +
+                                    processMonthDay(calendar.get(Calendar.DAY_OF_MONTH)) +
+                                    getDayOfWeek(Integer.toString(calendar.get(Calendar.DAY_OF_WEEK))),
+                            day1Wf, day1Min + "", day1Max + ""));
+
+                    calendar.add(Calendar.DATE, 1);
+                }
+            } else if (todayWeathers.get(i).getDay().equals("1")) {
+                if (day2Wf == null) {
+                    day2Wf = todayWeathers.get(i).getWfKor();
+                    day2Max = todayWeathers.get(i).getTmx();
+                    day2Min = todayWeathers.get(i).getTmn();
+
+                    realWeathers.add(new WeekWeatherInfo(
+                            (processMonthDay(calendar.get(Calendar.MONTH) + 1)) + "/" +
+                                    processMonthDay(calendar.get(Calendar.DAY_OF_MONTH)) +
+                                    getDayOfWeek(Integer.toString(calendar.get(Calendar.DAY_OF_WEEK))),
+                            day2Wf, day2Min + "", day2Max + ""));
+
+                    calendar.add(Calendar.DATE, 1);
                 }
             } else if (todayWeathers.get(i).getDay().equals("2")) {
-                if (afterTomorrowWf == null) {
-                    afterTomorrowWf = todayWeathers.get(i).getWfKor();
-                    afterTomorrowMax = todayWeathers.get(i).getTmx();
-                    afterTomorrowMin = todayWeathers.get(i).getTmn();
+                if (day3Wf == null) {
+                    day3Wf = todayWeathers.get(i).getWfKor();
+                    day3Max = todayWeathers.get(i).getTmx();
+                    day3Min = todayWeathers.get(i).getTmn();
+
+                    realWeathers.add(new WeekWeatherInfo(
+                            (processMonthDay(calendar.get(Calendar.MONTH) + 1)) + "/" +
+                                    processMonthDay(calendar.get(Calendar.DAY_OF_MONTH)) +
+                                    getDayOfWeek(Integer.toString(calendar.get(Calendar.DAY_OF_WEEK))),
+                            day3Wf, day3Min + "", day3Max + ""));
                 }
             }
         }
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.DATE, 1);
-
-        realWeathers.add(new WeekWeatherInfo(
-                (processMonthDay(calendar.get(Calendar.MONTH) + 1)) + "/" +
-                        processMonthDay(calendar.get(Calendar.DAY_OF_MONTH)) +
-                        getDayOfWeek(Integer.toString(calendar.get(Calendar.DAY_OF_WEEK))),
-                tomorrowWf, tomorrowMin + "", tomorrowMax + ""));
-
-        calendar.add(Calendar.DATE, 1);
-
-        realWeathers.add(new WeekWeatherInfo(
-                (processMonthDay(calendar.get(Calendar.MONTH) + 1)) + "/" +
-                        processMonthDay(calendar.get(Calendar.DAY_OF_MONTH)) +
-                        getDayOfWeek(Integer.toString(calendar.get(Calendar.DAY_OF_WEEK))),
-                afterTomorrowWf, afterTomorrowMin + "", afterTomorrowMax + ""));
     }
 
     private void setWeekWeather() { // 주간 날씨 parsing한 object를 처리
@@ -305,7 +327,7 @@ public class ReceiveWeekWeather extends AsyncTask<URL, Integer, Long> {
 
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(calendar.get(Calendar.YEAR),
-                        Integer.parseInt(time.getMonth()),
+                        Integer.parseInt(time.getMonth()) - 1,
                         Integer.parseInt(time.getDay()));
 
                 weekWeathers.get(i).setTmEf(
@@ -346,28 +368,6 @@ public class ReceiveWeekWeather extends AsyncTask<URL, Integer, Long> {
         }
 
         return "(일)";
-    }
-
-
-    private int setWeatherIcon(String weather) {
-
-        if (weather.equals("맑음")) {
-            return R.drawable.sun;
-        } else if (weather.equals("구름 조금")) {
-            return R.drawable.cloud;
-        } else if (weather.equals("구름 많음")) {
-            return R.drawable.clouds;
-        } else if (weather.equals("흐림")) {
-            return R.drawable.partly_cloudy;
-        } else if (weather.equals("비")) {
-            return R.drawable.rain;
-        } else if (weather.equals("눈/비")) {
-            return R.drawable.rain_and_snow;
-        } else if (weather.equals("눈")) {
-            return R.drawable.snow;
-        } else {
-            return R.drawable.sun;
-        }
     }
 
     private String processMonthDay(int number) {

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.wkdgusdn3.weatherdelivery.R;
 import com.wkdgusdn3.weatherdelivery.controller.adapter.TodayWeatherListViewAdapter;
@@ -16,7 +17,7 @@ public class TwoFragment extends Fragment {
     View view;
     ListView listView_todayWeather;
     TodayWeatherListViewAdapter todayWeatherLVA;
-
+    ProgressBar progressBar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -27,12 +28,13 @@ public class TwoFragment extends Fragment {
         setView();
         todayWeatherLVA = new TodayWeatherListViewAdapter(view.getContext());
 
-        new ReceiveTodayWeather(view.getContext(), listView_todayWeather, todayWeatherLVA).execute();
+        new ReceiveTodayWeather(view.getContext(), listView_todayWeather, todayWeatherLVA, progressBar).execute();
 
         return view;
     }
 
     private void setView() {
         listView_todayWeather = (ListView)view.findViewById(R.id.mainFragmentTwo_listView);
+        progressBar = (ProgressBar)view.findViewById(R.id.mainFragmentTwo_progressBar);
     }
 }

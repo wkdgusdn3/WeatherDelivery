@@ -2,7 +2,9 @@ package com.wkdgusdn3.weatherdelivery.controller.network;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -24,11 +26,14 @@ public class ReceiveTodayWeather extends AsyncTask<URL, Integer, Long> {
     ListView listView_todayWeather;
     ArrayList<TodayWeatherInfo> todayWeatherInfos = new ArrayList<TodayWeatherInfo>();
     TodayWeatherListViewAdapter todayWeatherLVA;
+    ProgressBar progressBar;
 
-    public ReceiveTodayWeather(Context context, ListView listView_todayWeather, TodayWeatherListViewAdapter todayWeatherLVA) {
+    public ReceiveTodayWeather(Context context, ListView listView_todayWeather,
+                               TodayWeatherListViewAdapter todayWeatherLVA, ProgressBar progressBar) {
         this.context = context;
         this.todayWeatherLVA = todayWeatherLVA;
         this.listView_todayWeather = listView_todayWeather;
+        this.progressBar = progressBar;
     }
 
     protected Long doInBackground(URL... urls) {
@@ -64,6 +69,8 @@ public class ReceiveTodayWeather extends AsyncTask<URL, Integer, Long> {
             }
             todayWeatherLVA.addTodayWeather(todayWeatherInfos.get(i));
         }
+
+        progressBar.setVisibility(View.INVISIBLE);
     }
 
     void parseXML(String xml) {

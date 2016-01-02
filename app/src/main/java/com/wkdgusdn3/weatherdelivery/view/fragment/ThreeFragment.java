@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.wkdgusdn3.weatherdelivery.R;
 import com.wkdgusdn3.weatherdelivery.controller.adapter.WeekWeatherListViewAdapter;
@@ -16,6 +17,7 @@ public class ThreeFragment extends Fragment {
     View view;
     ListView listView_weekWeather;
     WeekWeatherListViewAdapter weekWeatherLVA;
+    ProgressBar progressBar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -26,7 +28,8 @@ public class ThreeFragment extends Fragment {
         setView();
         weekWeatherLVA = new WeekWeatherListViewAdapter(view.getContext());
 
-        new ReceiveWeekWeather(view.getContext(), listView_weekWeather, weekWeatherLVA).execute();
+        new ReceiveWeekWeather(view.getContext(), listView_weekWeather,
+                weekWeatherLVA, progressBar).execute();
 
 
         return view;
@@ -35,10 +38,10 @@ public class ThreeFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-
     }
 
     private void setView() {
         listView_weekWeather = (ListView)view.findViewById(R.id.mainFragmentThree_listView);
+        progressBar = (ProgressBar)view.findViewById(R.id.mainFragmentThree_progressBar);
     }
 }
